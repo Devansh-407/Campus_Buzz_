@@ -69,23 +69,28 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50">
       {/* Header */}
-      <header className="container mx-auto px-4 py-6">
+      <header className="container mx-auto px-4 py-4 sm:py-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">CB</span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg sm:text-xl">CB</span>
             </div>
-            <span className="text-2xl font-bold text-gray-900">Campus Buzz</span>
+            <span className="text-xl sm:text-2xl font-bold text-gray-900">
+              <span className="hidden sm:inline">Campus Buzz</span>
+              <span className="sm:hidden">CB</span>
+            </span>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <Link href="/auth">
-              <Button variant="outline" className="border-orange-300 text-orange-600 hover:bg-orange-50 bg-transparent">
-                Sign In
+              <Button variant="outline" size="sm" className="border-orange-300 text-orange-600 hover:bg-orange-50 bg-transparent text-xs sm:text-sm">
+                <span className="hidden sm:inline">Sign In</span>
+                <span className="sm:hidden">Login</span>
               </Button>
             </Link>
             <Link href="/auth">
-              <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600">
-                Get Started
+              <Button size="sm" className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-xs sm:text-sm">
+                <span className="hidden sm:inline">Get Started</span>
+                <span className="sm:hidden">Join</span>
               </Button>
             </Link>
           </div>
@@ -93,43 +98,49 @@ export default function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
+      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16 text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
             Your Campus Events,{" "}
             <span className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
               Simplified
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
             Discover, book, and manage college events seamlessly. From hackathons to music festivals, find your next
             adventure on Campus Buzz.
           </p>
 
           {/* Role Selection Cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto mb-8 sm:mb-12 px-4">
             <Card className="border-2 border-orange-200 hover:border-orange-400 transition-colors cursor-pointer">
-              <CardHeader className="text-center">
-                <Users className="w-12 h-12 mx-auto text-orange-500 mb-2" />
-                <CardTitle className="text-xl">I'm a Student</CardTitle>
-                <CardDescription>Discover events, buy tickets, and join the campus community</CardDescription>
+              <CardHeader className="text-center p-4 sm:p-6">
+                <Users className="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-orange-500 mb-2" />
+                <CardTitle className="text-lg sm:text-xl">I'm a Student</CardTitle>
+                <CardDescription className="text-sm sm:text-base">Discover events, buy tickets, and join the campus community</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6 pt-0">
                 <Link href="/auth?role=student">
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600">Sign Up as Student</Button>
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-sm sm:text-base">
+                    <span className="hidden sm:inline">Sign Up as Student</span>
+                    <span className="sm:hidden">Join as Student</span>
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
 
             <Card className="border-2 border-pink-200 hover:border-pink-400 transition-colors cursor-pointer">
-              <CardHeader className="text-center">
-                <Calendar className="w-12 h-12 mx-auto text-pink-500 mb-2" />
-                <CardTitle className="text-xl">I'm an Admin</CardTitle>
-                <CardDescription>Create, manage, and organize amazing campus events</CardDescription>
+              <CardHeader className="text-center p-4 sm:p-6">
+                <Calendar className="w-10 h-10 sm:w-12 sm:h-12 mx-auto text-pink-500 mb-2" />
+                <CardTitle className="text-lg sm:text-xl">I'm an Admin</CardTitle>
+                <CardDescription className="text-sm sm:text-base">Create, manage, and organize amazing campus events</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6 pt-0">
                 <Link href="/auth?role=admin">
-                  <Button className="w-full bg-pink-500 hover:bg-pink-600">Sign Up as Admin</Button>
+                  <Button className="w-full bg-pink-500 hover:bg-pink-600 text-sm sm:text-base">
+                    <span className="hidden sm:inline">Sign Up as Admin</span>
+                    <span className="sm:hidden">Join as Admin</span>
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
@@ -138,15 +149,15 @@ export default function LandingPage() {
       </section>
 
       {/* Featured Events */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Events</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Featured Events</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto px-2 text-sm sm:text-base">
             Check out some of the exciting events happening on campus this month
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {featuredEvents.map((event) => {
             const IconComponent = event.icon
             return (
@@ -195,15 +206,15 @@ export default function LandingPage() {
       </section>
 
       {/* Event Categories */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Event Categories</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+      <section className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Event Categories</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto px-2 text-sm sm:text-base">
             Explore events across different categories and find what interests you most
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
           {categories.map((category) => {
             const IconComponent = category.icon
             return (
@@ -220,42 +231,42 @@ export default function LandingPage() {
       </section>
 
       {/* What We Do Section */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What We Do</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What We Do</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto px-2 text-sm sm:text-base">
               Campus Buzz is your one-stop platform for all college events and activities
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-8 h-8 text-orange-500" />
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="text-center px-2">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Event Discovery</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Event Discovery</h3>
+              <p className="text-gray-600 text-sm sm:text-base">
                 Find exciting events happening across your campus with detailed information and easy booking
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Ticket className="w-8 h-8 text-pink-500" />
+            <div className="text-center px-2">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Ticket className="w-6 h-6 sm:w-8 sm:h-8 text-pink-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Easy Booking</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Easy Booking</h3>
+              <p className="text-gray-600 text-sm sm:text-base">
                 Book tickets instantly with secure payment options and get digital tickets on your phone
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-green-500" />
+            <div className="text-center px-2 sm:col-span-2 md:col-span-1">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-green-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Community Building</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2">Community Building</h3>
+              <p className="text-gray-600 text-sm sm:text-base">
                 Connect with fellow students, join communities, and make lasting memories together
               </p>
             </div>
@@ -264,24 +275,24 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-orange-500 to-pink-500 py-16">
+      <section className="bg-gradient-to-r from-orange-500 to-pink-500 py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Join Campus Buzz?</h2>
-          <p className="text-orange-100 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ready to Join Campus Buzz?</h2>
+          <p className="text-orange-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-2 text-sm sm:text-base">
             Start discovering amazing events, connect with your campus community, and make the most of your college
             experience
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/auth?role=student">
-              <Button size="lg" className="bg-white text-orange-500 hover:bg-gray-100">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+            <Link href="/auth?role=student" className="w-full sm:w-auto">
+              <Button size="lg" className="bg-white text-orange-500 hover:bg-gray-100 w-full sm:w-auto">
                 Join as Student
               </Button>
             </Link>
-            <Link href="/auth?role=admin">
+            <Link href="/auth?role=admin" className="w-full sm:w-auto">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-orange-500 bg-transparent"
+                className="border-white text-white hover:bg-white hover:text-orange-500 bg-transparent w-full sm:w-auto"
               >
                 Become an Admin
               </Button>
@@ -291,16 +302,16 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-8 sm:py-12">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold">CB</span>
               </div>
-              <span className="text-xl font-bold">Campus Buzz</span>
+              <span className="text-lg sm:text-xl font-bold">Campus Buzz</span>
             </div>
-            <p className="text-gray-400"> 2024 Campus Buzz. Making college events accessible to everyone.</p>
+            <p className="text-gray-400 text-center sm:text-right text-sm sm:text-base"> 2024 Campus Buzz. Making college events accessible to everyone.</p>
           </div>
         </div>
       </footer>

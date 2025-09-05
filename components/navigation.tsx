@@ -68,64 +68,69 @@ export default function Navigation() {
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/home" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between h-16 w-full">
+          {/* Logo - Left Aligned */}
+          <div className="flex items-center">
+            <Link href="/home" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
+                <span className="hidden sm:inline">Campus Buzz</span>
+                <span className="sm:hidden">CB</span>
+              </span>
+            </Link>
+          </div>
+
+          {/* Center Section - Desktop Navigation and Search */}
+          <div className="hidden md:flex items-center flex-1 justify-center max-w-2xl mx-8">
+            <div className="flex items-center space-x-6 mr-6">
+              <Link
+                href="/home"
+                className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
+              >
+                <Home className="w-4 h-4" />
+                <span>Home</span>
+              </Link>
+              <Link
+                href="/events"
+                className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Events</span>
+              </Link>
+              <Link
+                href="/my-tickets"
+                className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
+              >
+                <Ticket className="w-4 h-4" />
+                <span>My Tickets</span>
+              </Link>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-              Campus Buzz
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/home"
-              className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
-            >
-              <Home className="w-4 h-4" />
-              <span>Home</span>
-            </Link>
-            <Link
-              href="/events"
-              className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>Events</span>
-            </Link>
-            <Link
-              href="/my-tickets"
-              className="flex items-center space-x-1 text-gray-700 hover:text-orange-500 transition-colors"
-            >
-              <Ticket className="w-4 h-4" />
-              <span>My Tickets</span>
-            </Link>
+            
+            {/* Search Bar */}
+            <div className="flex-1 max-w-md">
+              <form onSubmit={handleSearch} className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  type="text"
+                  placeholder="Search events..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 pr-4 py-2 w-full rounded-full border-gray-300 focus:border-orange-500 focus:ring-orange-500"
+                />
+              </form>
+            </div>
           </div>
 
-          {/* Search Bar */}
-          <div className="hidden md:block flex-1 max-w-md mx-8">
-            <form onSubmit={handleSearch} className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input
-                type="text"
-                placeholder="Search events..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 w-full rounded-full border-gray-300 focus:border-orange-500 focus:ring-orange-500"
-              />
-            </form>
-          </div>
-
-          {/* Right Side Icons */}
-          <div className="flex items-center space-x-4">
+          {/* Right Side Icons - Right Aligned */}
+          <div className="flex items-center space-x-3 ml-auto">
             {/* Cart */}
             <Link href="/cart" className="relative">
-              <Button variant="ghost" size="sm" className="relative">
-                <ShoppingCart className="w-5 h-5" />
+              <Button variant="ghost" size="sm" className="relative p-2">
+                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
                 {cartItemsCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs min-w-[20px] h-5 flex items-center justify-center rounded-full">
+                  <Badge className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs min-w-[16px] h-4 flex items-center justify-center rounded-full">
                     {cartItemsCount}
                   </Badge>
                 )}
@@ -135,16 +140,16 @@ export default function Navigation() {
             {/* Notifications */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="relative">
-                  <Bell className="w-5 h-5" />
+                <Button variant="ghost" size="sm" className="relative p-2">
+                  <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
                   {unreadNotifications.length > 0 && (
-                    <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs min-w-[20px] h-5 flex items-center justify-center rounded-full">
+                    <Badge className="absolute -top-1 -right-1 bg-red-500 text-white text-xs min-w-[16px] h-4 flex items-center justify-center rounded-full">
                       {unreadNotifications.length}
                     </Badge>
                   )}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-80">
+              <DropdownMenuContent align="end" className="w-72 sm:w-80 max-w-[calc(100vw-2rem)]">
                 <DropdownMenuLabel className="flex items-center justify-between">
                   Notifications
                   {notifications.length > 0 && (
@@ -185,14 +190,14 @@ export default function Navigation() {
             {/* User Menu */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
+                <Button variant="ghost" size="sm" className="flex items-center space-x-1 sm:space-x-2 p-1 sm:p-2">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                   </div>
                   <span className="hidden md:block text-sm font-medium">{user?.name || "User"}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuContent align="end" className="w-48 sm:w-56 max-w-[calc(100vw-2rem)]">
                 <DropdownMenuLabel>
                   <div className="flex flex-col">
                     <span>{user?.name || "User"}</span>
@@ -214,7 +219,7 @@ export default function Navigation() {
             </DropdownMenu>
 
             {/* Mobile Menu Button */}
-            <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Button variant="ghost" size="sm" className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </div>

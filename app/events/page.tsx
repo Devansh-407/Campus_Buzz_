@@ -204,24 +204,27 @@ export default function EventsPage() {
     },
   ]
 
+  // Use the actual events data (either from API or sample data) for counting
+  const currentEvents = events.length > 0 ? events : sampleEvents
+
   const categories = [
-    { id: "all", name: "All Events", icon: Calendar, count: events.length },
+    { id: "all", name: "All Events", icon: Calendar, count: currentEvents.length },
     {
       id: "Technology",
       name: "Technology",
       icon: Zap,
-      count: events.filter((e) => e.category === "Technology").length,
+      count: currentEvents.filter((e) => e.category === "Technology").length,
     },
-    { id: "Music", name: "Music", icon: Music, count: events.filter((e) => e.category === "Music").length },
-    { id: "Arts", name: "Arts", icon: Palette, count: events.filter((e) => e.category === "Arts").length },
-    { id: "Sports", name: "Sports", icon: Trophy, count: events.filter((e) => e.category === "Sports").length },
+    { id: "Music", name: "Music", icon: Music, count: currentEvents.filter((e) => e.category === "Music").length },
+    { id: "Arts", name: "Arts", icon: Palette, count: currentEvents.filter((e) => e.category === "Arts").length },
+    { id: "Sports", name: "Sports", icon: Trophy, count: currentEvents.filter((e) => e.category === "Sports").length },
     {
       id: "Photography",
       name: "Photography",
       icon: Camera,
-      count: events.filter((e) => e.category === "Photography").length,
+      count: currentEvents.filter((e) => e.category === "Photography").length,
     },
-    { id: "Gaming", name: "Gaming", icon: Gamepad2, count: events.filter((e) => e.category === "Gaming").length },
+    { id: "Gaming", name: "Gaming", icon: Gamepad2, count: currentEvents.filter((e) => e.category === "Gaming").length },
     { id: "Literature", name: "Literature", icon: BookOpen, count: 0 },
   ]
 
@@ -450,10 +453,6 @@ export default function EventsPage() {
               Find and book tickets for the most exciting events happening on campus. From tech talks to music festivals,
               there's something for everyone!
             </p>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Find and book tickets for the most exciting events happening on campus. From tech talks to music festivals,
-            there's something for everyone!
-          </p>
         </div>
 
         {/* Search and Filters */}
